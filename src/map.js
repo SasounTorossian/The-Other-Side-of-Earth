@@ -4,7 +4,7 @@ const MapModule = (() => {
         // Create map object with correct center and zoom
         let map1 = new google.maps.Map(document.getElementById("map1"), 
             {
-                zoom: 1,
+                zoom: 1.3,
                 center: new google.maps.LatLng(0,0),
                 restriction: {
                     latLngBounds: {
@@ -21,7 +21,7 @@ const MapModule = (() => {
         // Create map object with correct center and zoom
         let map2 = new google.maps.Map(document.getElementById("map2"), 
             {
-                zoom: 1,
+                zoom: 1.3,
                 center: new google.maps.LatLng(0,0),
                 restriction: {
                     latLngBounds: {

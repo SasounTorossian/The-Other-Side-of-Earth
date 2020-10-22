@@ -1,27 +1,78 @@
 /* Optional: Makes the sample page fill the window. */
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    background: lightgreen;
+}
+
+/* HEADER */
+.headerTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    margin: 5px;
+}
+
+.projectImg {
+    margin: 10px;
+}
+
+/* CONTENT */
 #content {
+    flex: 1;
     display: flex;
     height: 100%;
 }
 
 .map {
-    height: 50%;
+    height: 100%;
     width: 50%;
     margin: 10px;
 }
 
 #pac-input {
     margin: 10px;
-    height: 35px;
+    height: 38px;
     width: 300px;
-    border: 0.5px black solid;
-    border-radius: 5px;
+    border: 0px black solid;
+    border-radius: 2px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    font-size: 17px;
 }
 
+#pac-input:focus {
+    outline: none;
+}
 
+/* FOOTER */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+  
+.footer p {
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.footer img {
+    margin: 10px;
+    transition: all 0.2s ease;
+}
+
+.footer img:hover {
+    transform: scale(1.1);      
+}

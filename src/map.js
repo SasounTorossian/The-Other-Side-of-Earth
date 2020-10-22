@@ -2,65 +2,67 @@ const MapModule = (() => {
     window.initMap = () => {
 
         // Create map object with correct center and zoom
-        let map1 = new google.maps.Map(
-            document.getElementById("map1"), 
+        let map1 = new google.maps.Map(document.getElementById("map1"), 
             {
-                zoom: 1.3,
-                center: new google.maps.LatLng(0,0)
+                zoom: 1,
+                center: new google.maps.LatLng(0,0),
+                restriction: {
+                    latLngBounds: {
+                        north: 85,
+                        south: -85,
+                        west: -180,
+                        east: 180
+                    }
+                }
             }
         )
+        
 
         // Create map object with correct center and zoom
-        let map2 = new google.maps.Map(
-            document.getElementById("map2"), 
+        let map2 = new google.maps.Map(document.getElementById("map2"), 
             {
-                zoom: 1.3,
-                center: new google.maps.LatLng(0,0)
+                zoom: 1,
+                center: new google.maps.LatLng(0,0),
+                restriction: {
+                    latLngBounds: {
+                        north: 85,
+                        south: -85,
+                        west: -180,
+                        east: 180
+                    }
+                }
             }
         )
-
 
         // Create the search box and link it to the UI element.
         const input = document.getElementById("pac-input")
         const searchBox = new google.maps.places.SearchBox(input)
-        map1.controls[google.maps.ControlPosition.TOP_LEFT].push(input)
-
         // Bias the SearchBox results towards current map's viewport.
+        map1.controls[google.maps.ControlPosition.TOP_LEFT].push(input)
+        
+
         searchBox.addListener("places_changed", () => {
             const places = searchBox.getPlaces()
-                if (places.length == 0) return
-
+            if (places.length == 0) return
             places.forEach((place) => addMarker(place.geometry.location))
           })
         
         let marker1
         let marker2
 
-        map1.addListener("click", (e) => {
-            addMarker(e.latLng)
-        })
+        map1.addListener("click", (e) => addMarker(e.latLng))
         
         const addMarker = (latLng) => {
-            let lat = - latLng.toJSON().lat
+            let lat = -latLng.toJSON().lat
             let lng = latLng.toJSON().lng + 180
             let antiLatLng = new google.maps.LatLng({lat , lng})
 
             if(marker1) marker1.setPosition(latLng)
-            else {
-                marker1 = new google.maps.Marker({
-                    position: latLng,
-                    map: map1,
-                  });
-            }
+            else marker1 = new google.maps.Marker({position: latLng, map: map1})
             map1.panTo(latLng)
 
             if(marker2) marker2.setPosition(antiLatLng)
-            else {
-                marker2 = new google.maps.Marker({
-                    position: antiLatLng,
-                    map: map2,
-                  });
-            }
+            else marker2 = new google.maps.Marker({position: antiLatLng, map: map2})
             map2.panTo(antiLatLng)
             map2.setZoom(map1.getZoom())
         }

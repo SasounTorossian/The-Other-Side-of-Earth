@@ -12,7 +12,10 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    background: lightgreen;
+    background-image: url("../images/earth-space.jpg");
+    background-repeat: no-repeat;
+    background-position: center -650px;
+    background-size: 5000px;
 }
 
 /* HEADER */
@@ -25,7 +28,7 @@ body {
 }
 
 .projectImg {
-    margin: 10px;
+    margin: 0 25px;
 }
 
 /* CONTENT */
@@ -36,9 +39,20 @@ body {
 }
 
 .map {
+    /* display: none; */
     height: 100%;
-    width: 50%;
-    margin: 10px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#map1 {
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+#map2 {
+    margin-left: 10px;
+    margin-right: 30px;
 }
 
 #pac-input {
@@ -60,12 +74,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px;
+    margin: 10px;
 }
   
 .footer p {
-    font-weight: 500;
-    font-size: 25px;
+    font-weight: 600;
+    font-size: 35px;
+    color: black;
 }
 
 .footer img {
